@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login & Signup Form | @Lks007</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+
+</head>
+<body>
+  
+  <div class="container">
+    <!-- Success Popup -->
+    <div class="success-popup" id="successPopup">
+      <div class="popup-content">
+        <div class="emoji-animation">
+          <div class="emoji">😊</div>
+          <div class="sparkles">
+            <span>✨</span>
+            <span>✨</span>
+            <span>✨</span>
+            <span>✨</span>
+          </div>
+        </div>
+        <h3 id="popupTitle">Success!</h3>
+        <p id="popupMessage">You have successfully logged in!</p>
+        <button class="close-btn" onclick="closePopup()">Continue</button>
+      </div>
+    </div>
+
+    <!-- Login Form -->
+    <div class="box" id="loginBox">
+      <div class="login">
+        <div class="loginBx">
+          <h2>
+            <i class="fa-solid fa-right-to-bracket"></i>
+            Login
+          </h2>
+          <input type="text" id="loginUsername" placeholder="Username">
+          <input type="password" id="loginPassword" placeholder="Password">
+          <input type="submit" value="Sign in" onclick="handleLogin()">
+          <div class="group">
+            <a href="#" onclick="switchToForgotPassword()">Forgot Password</a>
+            <a href="#" onclick="switchToSignup()">Sign up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signup Form -->
+    <div class="box" id="signupBox" style="display: none;">
+      <div class="login">
+        <div class="loginBx">
+          <h2>
+            <i class="fa-solid fa-user-plus"></i>
+            Sign Up
+            
+          </h2>
+          <input type="text" id="signupUsername" placeholder="Username">
+          <input type="email" id="signupEmail" placeholder="Email">
+          <input type="password" id="signupPassword" placeholder="Password">
+          <input type="submit" value="Create Account" onclick="handleSignup()">
+          <div class="group">
+            <a href="#" onclick="switchToLogin()">Already have account?</a>
+            <a href="#" onclick="switchToLogin()">Log in</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Forgot Password Form -->
+    <div class="box" id="forgotPasswordBox" style="display: none;">
+      <div class="login">
+        <div class="loginBx">
+          <h2>
+            <i class="fa-solid fa-key"></i>
+            Reset Password
+            
+          </h2>
+          <input type="email" id="resetEmail" placeholder="Enter your email">
+          <input type="submit" value="Send Reset Link" onclick="handleResetPassword()">
+          <div class="group">
+            <a href="#" onclick="switchToLogin()">Login</a>
+            <a href="#" onclick="switchToSignup()">Sign up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+  <script src="script.js"></script>
+</body>
+</html>

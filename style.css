@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Bruno Ace SC", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #252432;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@property --a {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.box {
+  position: relative;
+  width: 500px; /* Changed from 400px to 500px */
+  height: 200px;
+  background: repeating-conic-gradient(
+    from var(--a),
+    #ff2770 0%,
+    #ff2770 5%,
+    transparent 5%,
+    transparent 40%,
+    #ff2770 50%
+  );
+  filter: drop-shadow(0 15px 50px #000);
+  animation: rotating 4s linear infinite;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.box.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.box:hover {
+  width: 600px; /* Changed from 450px to 550px */
+  height: 500px;
+}
+
+@keyframes rotating {
+  0% {
+    --a: 0deg;
+  }
+  100% {
+    --a: 360deg;
+  }
+}
+
+.box::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-conic-gradient(
+    from var(--a),
+    #45f3ff 0%,
+    #45f3ff 5%,
+    transparent 5%,
+    transparent 40%,
+    #45f3ff 50%
+  );
+  filter: drop-shadow(0 15px 50px #000);
+  border-radius: 20px;
+  animation: rotating 4s linear infinite;
+  animation-delay: -1s;
+}
+
+.box::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  background: #2d2d39;
+  border-radius: 15px;
+  border: 8px solid #25252b;
+}
+
+.login {
+  position: absolute;
+  inset: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  transition: 0.5s;
+  color: #fff;
+  overflow: hidden;
+}
+
+.box:hover .login {
+  inset: 40px;
+}
+
+.loginBx {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transform: translateY(126px);
+  gap: 20px;
+  width: 70%;
+  transition: 0.5s;
+}
+
+.box:hover .loginBx {
+  transform: translateY(0px);
+}
+
+.loginBx h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.loginBx h2 i {
+  color: #ff2770;
+  text-shadow: 0 0 5px #ff2770, 0 0 30px #ff2770;
+}
+
+.loginBx input {
+  width: 100%;
+  padding: 10px 20px;
+  outline: none;
+  font-size: 1em;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.1);
+  border: 2px solid #fff;
+  border-radius: 30px;
+}
+
+.loginBx input::placeholder {
+  color: #999;
+}
+
+.loginBx input[type="submit"] {
+  background: #45f3ff;
+  border: none;
+  font-weight: 500;
+  color: #111;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.loginBx input[type="submit"]:hover {
+  box-shadow: 0 0 10px #45f3ff, 0 0 60px #45f3ff;
+}
+
+.group {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.group a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: 0.3s;
+}
+
+.group a:hover {
+  color: #45f3ff;
+}
+
+.group a:nth-child(2) {
+  color: #ff2770;
+  font-weight: 600;
+}
+
+.group a:nth-child(2):hover {
+  color: #ff4d8d;
+}
+
+/* Success Popup Styles */
+.success-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+}
+
+.success-popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup-content {
+  background: #2d2d39;
+  padding: 50px;
+  border-radius: 20px;
+  text-align: center;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all 0.5s ease;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+  overflow: hidden;
+  max-width: 500px; /* Add or increase this value if needed */
+  width: 90%;
+}
+
+.success-popup.show .popup-content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.popup-content::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff2770, #45f3ff, #ff2770);
+  border-radius: 22px;
+  z-index: -1;
+  animation: borderRotate 3s linear infinite;
+}
+
+@keyframes borderRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.emoji-animation {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.emoji {
+  font-size: 80px;
+  animation: bounce 1s ease infinite alternate;
+  display: inline-block;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.1);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.sparkles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sparkles span {
+  position: absolute;
+  font-size: 24px;
+  animation: sparkle 2s linear infinite;
+}
+
+.sparkles span:nth-child(1) {
+  top: 10%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.sparkles span:nth-child(2) {
+  top: 20%;
+  right: 20%;
+  animation-delay: 0.5s;
+}
+
+.sparkles span:nth-child(3) {
+  bottom: 30%;
+  left: 30%;
+  animation-delay: 1s;
+}
+
+.sparkles span:nth-child(4) {
+  bottom: 20%;
+  right: 30%;
+  animation-delay: 1.5s;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+.popup-content h3 {
+  color: #fff;
+  font-size: 2em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(45deg, #ff2770, #45f3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.popup-content p {
+  color: #ccc;
+  margin-bottom: 30px;
+  font-size: 1.1em;
+}
+
+.close-btn {
+  background: linear-gradient(45deg, #ff2770, #45f3ff);
+  color: #fff;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 30px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.close-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Form switching animation */
+.box.switching-out {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+.box.switching-in {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.box.switching-in.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Add smooth transition for form switching */
+.box {
+  transition: all 0.5s ease;
+}
